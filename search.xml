@@ -89,6 +89,12 @@
 <p>同样是一个roar消息，却因为不同的对象可产生完全不同的结果。</p>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>UML</category>
+      </categories>
+      <tags>
+        <tag>uml</tag>
+      </tags>
   </entry>
   <entry>
     <title>多线程基础</title>
