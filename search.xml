@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>UML图详解</title>
+    <url>/posts/51184.html</url>
+    <content><![CDATA[<h1 id="UML类图的箭头含义"><a href="#UML类图的箭头含义" class="headerlink" title="UML类图的箭头含义"></a>UML类图的箭头含义</h1><p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424221056LyyEzU.jpg" alt="line"></p>
+<h4 id="1、关联（Association）"><a href="#1、关联（Association）" class="headerlink" title="1、关联（Association）"></a>1、关联（Association）</h4><ol>
+<li>【关联关系】：是一种拥有的关系，它使一个类知道另一个类的属性和方法； </li>
+<li>【代码体现】：成员变量 </li>
+<li>【箭头及指向】：带普通箭头的实心线，指向被拥有者</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424221058LbwusN.jpg" alt="Association"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//学生</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123; </span><br><span class="line">	<span class="keyword">private</span> Teacher teacher; </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//老师</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span></span>&#123; </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2、双向关联（Association）"><a href="#2、双向关联（Association）" class="headerlink" title="2、双向关联（Association）"></a>2、双向关联（Association）</h4><ol>
+<li>和关联一样，不过它是两个方向的，如学生和老师，老师和学生，双向关系。 </li>
+<li>只能表示是类之间的关联关系，不能表示聚合和组合关系</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424221100A3LKAQ.jpg" alt="未命名文件"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123; </span><br><span class="line">	<span class="keyword">private</span> Teacher teacher; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span></span>&#123; </span><br><span class="line">	<span class="keyword">private</span> Student stuent; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3、聚合（Aggregation）"><a href="#3、聚合（Aggregation）" class="headerlink" title="3、聚合（Aggregation）"></a>3、聚合（Aggregation）</h4><ol>
+<li>表示整体和部分的关系，has-a的关系，如停车场和车。通常是通过构造函数或者setter赋值进去的。</li>
+<li>实心菱形表示整体，普通三角箭头表示部分 </li>
+<li><strong>部分</strong> （Car） 的生命周期，是<strong>可以单独存在</strong>的时候用 聚合来表示</li>
+</ol>
+<blockquote>
+<p>【聚合关系】：是整体与部分的关系，且部分可以离开整体而单独存在。如车和轮胎是整体和部分的关系，轮胎离开车仍然可以存在。 </p>
+<p>聚合关系是关联关系的一种，是强的关联关系；关联和聚合在语法上无法区分，必须考察具体的逻辑关系。 </p>
+<p>【代码体现】：成员变量 </p>
+<p>【箭头及指向】：带空心菱形的实心线，菱形指向整体</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424221101RtHuAs.jpg" alt="Aggregation"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parking</span></span>&#123; </span><br><span class="line">	<span class="keyword">private</span> Car car; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEngine</span><span class="params">(Car car)</span></span>&#123; </span><br><span class="line">  	  <span class="keyword">this</span>.car = car; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4、组合（Composition）"><a href="#4、组合（Composition）" class="headerlink" title="4、组合（Composition）"></a>4、组合（Composition）</h4><ol>
+<li>整体和部分的关系，contain-a 的关系，如手是人体的一分部。通常是在构造函数的时候，通过new创建出来。</li>
+<li><strong>部分</strong> （Hand） 的生命周期，是 <strong>不可以单独存在</strong>  的时候用 聚合来表示</li>
+</ol>
+<blockquote>
+<p>【组合关系】：是整体与部分的关系，但部分不能离开整体而单独存在。如公司和部门是整体和部分的关系，没有公司就不存在部门。 </p>
+<p>​                   组合关系是关联关系的一种，是比聚合关系还要强的关系，它要求普通的聚合关系中代表整体的对象负责代表部分的对象的生命周期。 </p>
+<p>【代码体现】：成员变量 </p>
+<p>【箭头及指向】：带实心菱形的实线，菱形指向整体</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424221103xkxi02.jpg" alt="Composition"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123; </span><br><span class="line">    <span class="keyword">private</span> Hand hand; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">People</span><span class="params">()</span></span>&#123; </span><br><span class="line">   	 	<span class="keyword">this</span>.hand = <span class="keyword">new</span> Hand(); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="5、依赖（Dependency）"><a href="#5、依赖（Dependency）" class="headerlink" title="5、依赖（Dependency）"></a>5、依赖（Dependency）</h4><ol>
+<li>是使用的关系，例如汽车使用喇叭来鸣笛，调用汽车鸣笛的方法时，就依赖于喇叭鸣笛方法。 </li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424221105QRpvBy.png" alt="Dependency"></p>
+<h4 id="6、泛化（Generalization）"><a href="#6、泛化（Generalization）" class="headerlink" title="6、泛化（Generalization）"></a>6、泛化（Generalization）</h4><blockquote>
+<p>【泛化关系】：是一种继承关系, 表示一般与特殊的关系, 它指定了子类如何特化父类的所有特征和行为. 例如：老虎是动物的一种, 即有老虎的特性也有动物的共性.</p>
+<p>【箭头指向】：带三角箭头的实线，箭头指向父类</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424221106UAM0FH.png" alt="Generalization"></p>
+<p>实现（Generalization ）是指一个class继承类或者抽象类，表示类具备了某种能力，继承是类与类中最常见的关系，在Java中通过extend 关键字来表示。</p>
+<h4 id="7、实现（Realization）"><a href="#7、实现（Realization）" class="headerlink" title="7、实现（Realization）"></a>7、实现（Realization）</h4><ol>
+<li>【实现关系】：是一种类与接口的关系，表示类是接口所有特征和行为的实现.</li>
+<li>【代码体现】：类实现接口成员 </li>
+<li>【箭头指向】：带三角箭头的虚线，箭头指向接口</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424221109LskS83.png" alt="realization"></p>
+<p>实现（realization）是指一个class实现interface接口（一个或者多个），表示类具备了某种能力，实现是类与接口中最常见的关系，在Java中通过implements关键字来表示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424221111bY19Ee.png" alt="img"></p>
+<blockquote>
+<p>这张图完整讲述了鸟类的生存。</p>
+<p>首先是类：在UML中，我们用分成三栏的长方形表示。第一栏是名称，第二栏是属性，第三栏是方法。</p>
+<p>继承：唐老鸭属于鸭的一种，或者说是鸭的细化划分，而鸭属于鸟类，鸟类属于动物，这里无论表达成“是”还是属于，就是这样一个直观的关系。用实线一端带空心三角箭头表示。箭头指向父类。</p>
+<p>依赖：凡是动物，生存都需要水和空气，这种必须的需求，我们称之为依赖关系。用虚线一端带箭头表示，箭头指向依赖物。</p>
+<p>聚合、组合：这两个关系我们放在一起，因为她们看似十分的相似，但是却有着本质的区别。</p>
+<p>​                 很多大雁聚合在一起变成雁群，也可以说雁群里有雁，所以是整体和个体之间的关系,即has-a的关系，此时整体与部分之间是可分离的，他们可以具有各自的生命周期。即雁群可以不存在了，但是孤雁仍然存在。</p>
+<p>​                      一只鸟由两个翅膀组合而成，即一只鸟有两个翅膀。虽然组合和聚合我们都说“有”什么，但是这个“有”是不同的，他体现的是一种contains-a的关系，这种关系比聚合更强，也称为强聚合；他同样体现整体与部分间的关系，但此时整体与部分是不可分的，整体的生命周期结束也就意味着部分的生命周期结束，比如这只鸟死了，自然这两个翅膀也就不存在了。</p>
+<p>关联：企鹅和气候有关联，关联是最常见的关系，表示类与类之间的联接, 它使一个类知道另一个类的属性和方法。关联有两个端点, 在每个端点可以有一个基数, 表示这个关联的类可以有几个实例.<br>​           常见的基数及含义: 0..1:0 或1 个实例.<br>​                                             0..<em>: 对实例的数目没有限制.<br>​                                             1: 只能有一个实例.<br>​                                             1..</em>: 至少有一个实例. </p>
+<p>接口：最后就是接口了，接口有两栏组成，第一栏的顶端加上《interface》后下方写接口名称，第二栏是接口方法。接口有自己的表示方法“实现”，虚线一端带空心三角形。实际开发中，为了更好的实现”开-闭原则”，一般都是定义接口，依赖于接口，依赖于抽象。</p>
+<p>还有一个概念是——多态，图中没有出现。多态顾名思义就是有很多种形式。</p>
+<p>bush.roar()</p>
+<p>orang.roar()</p>
+<p>donald.roar()</p>
+<p>同样是一个roar消息，却因为不同的对象可产生完全不同的结果。</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>多线程基础</title>
+    <url>/posts/26846.html</url>
+    <content><![CDATA[<h4 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h4><p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424215334kWxUhh.jpg" alt=""></p>
+<p><strong>1、NEW（可运行）</strong></p>
+<p>java.lang.Thread.State.NEW枚举中的NEW状态描述：</p>
+<p>创建后尚未启动的线程处于这个状态。意思是这个线程没有被start()启动，或者说还根本不是一个真正意义上的线程，从本质上讲这只是创建了一个Java外壳，还没有真正的线程来运行。</p>
+<p>不代表调用了start()，状态就立即改变，中间还有一些步骤，如果在这个启动的过程中有另一个线程来获取它的状态，其实是不确定的，要看那些中间步骤是否已经完成了。</p>
+<p><strong>2、RUNNABLE（可运行）</strong></p>
+<p>java.lang.Thread.State枚举中的RUNNABLE状态描述：</p>
+<p>RUNNABLE状态包括了操作系统线程状态中的Running和Ready，也就是处于此状态的线程可能正在运行，也可能正在等待系统资源，如等待CPU为它分配时间片，如等待网络IO读取数据。</p>
+<p>RUNNABLE状态也可以理解为存活着正在尝试征用CPU的线程（有可能这个瞬间并没有占用CPU，但是它可能正在发送指令等待系统调度）。由于在真正的系统中，并不是开启一个线程后，CPU就只为这一个线程服务，它必须使用许多调度算法来达到某种平衡，不过这个时候线程依然处于RUNNABLE状态。</p>
+<p><strong>3、BLOCKED（阻塞）</strong></p>
+<p>BLOCKED称为阻塞状态，或者说线程已经被挂起，它“睡着”了，原因通常是它在等待一个“锁”，当尝试进入一个synchronized语句块/方法时，锁已经被其它线程占有，就会被阻塞，直到另一个线程走完临界区或发生了相应锁对象的wait()操作后，它才有机会去争夺进入临界区的权利</p>
+<p>在Java代码中，需要考虑synchronized的粒度问题，否则一个线程长时间占用锁，其它争抢锁的线程会一直阻塞，直到拥有锁的线程释放锁</p>
+<p>处于BLOCKED状态的线程，即使对其调用 thread.interrupt()也无法改变其阻塞状态，因为interrupt()方法只是设置线程的中断状态，即做一个标记，不能唤醒处于阻塞状态的线程</p>
+<p><strong>注意：</strong>ReentrantLock.lock()操作后进入的是WAITING状态，其内部调用的是LockSupport.park()方法</p>
+<p><strong>4、WAITING（无限期等待）</strong></p>
+<p>处于这种状态的线程不会被分配CPU执行时间，它们要等待显示的被其它线程唤醒。这种状态通常是指一个线程拥有对象锁后进入到相应的代码区域后，调用相应的“锁对象”的wait()方法操作后产生的一种结果。变相的实现还有LockSupport.park()、Thread.join()等，它们也是在等待另一个事件的发生，也就是描述了等待的意思。</p>
+<p>以下方法会让线程陷入无限期等待状态：</p>
+<p>（1）没有设置timeout参数的Object.wait()</p>
+<p>（2）没有设置timeout参数的Thread.join()</p>
+<p>（3）LockSupport.park()</p>
+<p><strong>注意：</strong></p>
+<p>LockSupport.park(Object blocker) 会挂起当前线程，参数blocker是用于设置当前线程的“volatile Object parkBlocker 成员变量”</p>
+<p>parkBlocker 是用于记录线程是被谁阻塞的，可以通过LockSupport.getBlocker()获取到阻塞的对象，用于监控和分析线程用的。</p>
+<p><strong>“阻塞”与“等待”的区别：</strong></p>
+<p>（1）“阻塞”状态是等待着获取到一个排他锁，进入“阻塞”状态都是被动的，离开“阻塞”状态是因为其它线程释放了锁，不阻塞了；</p>
+<p>（2）“等待”状态是在等待一段时间 或者 唤醒动作的发生，进入“等待”状态是主动的</p>
+<p>如主动调用Object.wait()，如无法获取到ReentraantLock，主动调用LockSupport.park()，如主线程主动调用 subThread.join()，让主线程等待子线程执行完毕再执行</p>
+<p>离开“等待”状态是因为其它线程发生了唤醒动作或者到达了等待时间</p>
+<p><strong>5、TIMED_WAITING（限期等待）</strong></p>
+<p>处于这种状态的线程也不会被分配CPU执行时间，不过无需等待被其它线程显示的唤醒，在一定时间之后它们会由系统自动的唤醒。</p>
+<p>以下方法会让线程进入TIMED_WAITING限期等待状态：</p>
+<p>（1）Thread.sleep()方法</p>
+<p>（2）设置了timeout参数的Object.wait()方法</p>
+<p>（3）设置了timeout参数的Thread.join()方法</p>
+<p>（4）LockSupport.parkNanos()方法</p>
+<p>（5）LockSupport.parkUntil()方法</p>
+<p><strong>6、TERMINATED（结束）</strong></p>
+<p>已终止线程的线程状态，线程已经结束执行。换句话说，run()方法走完了，线程就处于这种状态。其实这只是Java语言级别的一种状态，在操作系统内部可能已经注销了相应的线程，或者将它复用给其他需要使用线程的请求，而在Java语言级别只是通过Java代码看到的线程状态而已。</p>
+<h4 id="线程相关API"><a href="#线程相关API" class="headerlink" title="线程相关API"></a>线程相关API</h4><h5 id="java-lang-Thread"><a href="#java-lang-Thread" class="headerlink" title="java.lang.Thread"></a>java.lang.Thread</h5><ul>
+<li>java.lang.Thread#<strong>currentThread</strong><ul>
+<li>获取当前线程</li>
+</ul>
+</li>
+<li>java.lang.Thread#<strong>yield</strong><ul>
+<li>线程交出cpu 执行时间片，并且线程进入 java.lang.Thread.State.RUNNABLE</li>
+</ul>
+</li>
+<li>java.lang.Thread#<strong>sleep(long)</strong><ul>
+<li>线程进入 <strong>java.lang.Thread.State.TIMED_WAITING</strong>，但线程不释放获取到的锁</li>
+</ul>
+</li>
+<li>java.lang.Thread#<strong>interrupt</strong><ul>
+<li>向线程发送一个中断信号</li>
+<li>如果线程之前调用过 <strong>java.lang.Object#wait()</strong> 、<strong>java.lang.Thread#join()</strong>、<strong>java.lang.Thread#sleep(long)</strong> 等方法，</li>
+<li>将会抛出 <strong>java.lang.InterruptedException</strong>异常，并且中断状态设置为false,并且线程状态为 <strong>java.lang.Thread.State#TERMINATED</strong></li>
+</ul>
+</li>
+<li>java.lang.Thread#<strong>interrupted</strong><ul>
+<li>清除中断状态</li>
+</ul>
+</li>
+<li>java.lang.Thread#<strong>isInterrupted()</strong><ul>
+<li>检查线程是否已经有中断信号</li>
+</ul>
+</li>
+<li>java.lang.Thread#<strong>isAlive</strong><ul>
+<li>检查线程是否存活</li>
+</ul>
+</li>
+<li>java.lang.Thread<strong><del>#suspend</del></strong><ul>
+<li>suspend被弃用的原因是因为它会造成死锁。suspend方法和stop方法不一样，它不会破换对象和强制释放锁，相反它会一直保持对锁的占有，一直到其他的线程调用resume方法，它才能继续向下执行。</li>
+<li>假如有A，B两个线程，A线程在获得某个锁之后被suspend阻塞，这时A不能继续执行，线程B在或者相同的锁之后才能调用resume方法将A唤醒，但是此时的锁被A占有，B不能继续执行，也就不能及时的唤醒A，此时A，B两个线程都不能继续向下执行而形成了死锁。这就是suspend被弃用的原因。</li>
+</ul>
+</li>
+<li>java.lang.Thread#<strong><del>resume</del></strong><ul>
+<li>释放调用 java.lang.Thread*<em><del>#suspend</del> *</em> 的线程 </li>
+</ul>
+</li>
+<li>java.lang.Thread<strong>#enumerate</strong><ul>
+<li>获取当前线程所在线程组，里面所有线程实例</li>
+</ul>
+</li>
+<li>java.lang.Thread#<strong>join()</strong> <ul>
+<li>等待被调用的线程执行完成，自己在往下执行。</li>
+</ul>
+</li>
+<li>java.lang.Thread<strong>#setDaemon</strong><ul>
+<li>如果线程设置为守护线程后，该线程的父线程结束，则该线程也结束。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+</search>
