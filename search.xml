@@ -44,8 +44,7 @@
 <p>Arguments:<br>  type  Available types: page, post, route, tag, category</p>
 </blockquote>
 <h4 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h4><blockquote>
-<p>Usage: hexo new [layout] <title></p>
-<p>Description:<br>创建文章</p>
+<p>Usage: hexo new [layout] title<br>Description:<br>创建文章</p>
 <ul>
 <li>文件类型<ul>
 <li>post：普通文件</li>
@@ -185,6 +184,18 @@
       </tags>
   </entry>
   <entry>
+    <title>离散数学-命题逻辑</title>
+    <url>/posts/449951f7.html</url>
+    <content><![CDATA[<h2 id="爱豆世纪发生的浪费"><a href="#爱豆世纪发生的浪费" class="headerlink" title="爱豆世纪发生的浪费"></a>爱豆世纪发生的浪费</h2>]]></content>
+      <categories>
+        <category>离散数学</category>
+        <category>命题逻辑</category>
+      </categories>
+      <tags>
+        <tag>离散数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>多线程基础</title>
     <url>/posts/26846.html</url>
     <content><![CDATA[<h4 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h4><p><img src="https://cdn.jsdelivr.net/gh/daocr/img@master/uPic/20200424215334kWxUhh.jpg" alt=""></p>
@@ -279,17 +290,5 @@
 </li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>离散数学-命题逻辑</title>
-    <url>/posts/449951f7.html</url>
-    <content><![CDATA[<h2 id="爱豆世纪发生的浪费"><a href="#爱豆世纪发生的浪费" class="headerlink" title="爱豆世纪发生的浪费"></a>爱豆世纪发生的浪费</h2>]]></content>
-      <categories>
-        <category>离散数学</category>
-        <category>命题逻辑</category>
-      </categories>
-      <tags>
-        <tag>离散数学</tag>
-      </tags>
   </entry>
 </search>
